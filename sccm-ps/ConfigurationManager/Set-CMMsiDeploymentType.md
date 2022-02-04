@@ -108,6 +108,11 @@ This command changes the name of the deployment type from **DTMsi** to **DTMsi_U
 Set-CMMSiDeploymentType -ApplicationName "testMsi" -DeploymentTypeName "DTMsi" -NewName "DTMsi_Updated" -AddLanguage "en-US","zh-CN" -Comment "New Deployment Type-updated" -EstimatedRuntimeMins 14 -LogonRequirementType OnlyWhenNoUserLoggedOn
 ```
 
+This command changes the content path of a deployment type by using the path rather than the msi name.  Note the required backslash on the end of the path.
+```powershell
+Set-CMMSiDeploymentType -ApplicationName "MyApp V1.0.0" -DeploymentTypeName "My App V1.0.0 - Windows Installer (*.msi file)" –ContentLocation "\\MyServer\MyPath\My App\1.0.0\"
+```
+
 For other examples with requirement rules and detection methods, see [Set-CMScriptDeploymentType](Set-CMScriptDeploymentType.md) and [Add-CMMsiDeploymentType](Add-CMMsiDeploymentType.md).
 
 ## PARAMETERS
@@ -291,7 +296,7 @@ Accept wildcard characters: False
 
 Specifies the network source path of the MSI file. The site system server requires permission to read the content files.
 
-Starting in version 2107, you can specify the path of the MSI file or the path to the folder that contains the MSI.
+Starting in version 2107, you can specify the path of the MSI file or the path to the folder that contains the MSI. To use a path, the path must finish with a Backslash.  "\"
 
 ```yaml
 Type: String
